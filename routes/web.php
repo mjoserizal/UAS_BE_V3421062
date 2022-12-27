@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\User62Controller;
 use App\Http\Controllers\Agama62Controller;
+use App\Http\Controllers\Admin62Controller;
 use App\Http\Controllers\apiclient\Agama62Controller as ClientAgama62Controller;
 use App\Http\Controllers\apiclient\User62Controller as ClientUser62Controller;
 use Illuminate\Support\Facades\Route;
@@ -38,7 +39,7 @@ Route::group(['middleware' => ['isAdmin']], function () {
     Route::get('/user62/{id}', [User62Controller::class, 'detailPage62']);
     Route::get('/user62/{id}/status', [User62Controller::class, 'putUserStatus62']);
     Route::post('/user62/{id}/agama', [User62Controller::class, 'putUserAgama62']);
-    Route::get('/user62/{id}/delete', [User62Controller::class, 'deleteUser62']);
+    Route::get('/user62/{id}/delete', [Admin62Controller::class, "deleteUser62"]);
 
     // API AGAMA
     Route::get("/agama62", [Agama62Controller::class, "agamaPage62"]);

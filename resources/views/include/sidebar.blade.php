@@ -28,9 +28,9 @@
 </div>
 
 @if (Auth::check() && Auth::user()->role == 'admin')
-    <h3 class="nav-header">Main</h3>
+    <h3 class="nav-header">Menu</h3>
     <li class="nav-item">
-        <a href="{{ url('halo62') }}" class="nav-link">
+        <a href="{{ url('dashboard62') }}" class="nav-link">
             <i class="nav-icon fas fa-table"></i>
             <p>
                 Dashboard
@@ -39,9 +39,9 @@
     </li>
     <li class="nav-item">
         <a href="{{ url('dashboard62') }}" class="nav-link">
-            <i class="nav-icon fas fa-user"></i>
+            <i class="far fa-user nav-icon"></i>
             <p>
-                User Management
+                Kelola User
             </p>
         </a>
     </li>
@@ -49,7 +49,7 @@
         <a href="{{ url('agama62') }}" class="nav-link">
             <i class="nav-icon fas fa-pray"></i>
             <p>
-                CRUD Agama
+                Kelola Agama
             </p>
         </a>
     </li>

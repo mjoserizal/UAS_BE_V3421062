@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\FormatApi;
 use App\Models\User;
+use App\Models\Data62;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
@@ -79,10 +80,10 @@ class User62Controller extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'photoProfil' => 'required',
+            'foto' => 'required',
         ]);
 
-        $fileName = $request->photoProfil;
+        $fileName = $request->foto;
 
         if ($validator->fails()) {
             return new FormatApi(false, 'Validasi gagal', $validator->errors()->all());
@@ -94,12 +95,12 @@ class User62Controller extends Controller
             }
         }
 
-        if (file_exists(public_path('tmp/' . $fileName))) {
+        if (file_exists(public_path('photo/' . $fileName))) {
             $updatePhoto = $user->update([
                 'foto' => $fileName,
             ]);
 
-            rename(public_path('tmp/' . $fileName), public_path('photo/' . $fileName));
+            rename(public_path('photo/' . $fileName), public_path('photo/' . $fileName));
 
             if ($updatePhoto) {
                 return new FormatApi(true, 'Berhasil mengubah foto profil user', null);
@@ -120,10 +121,10 @@ class User62Controller extends Controller
         }
 
         $validator = Validator::make($request->all(), [
-            'photoKTP' => 'required',
+            'foto_ktp' => 'required',
         ]);
 
-        $fileName = $request->photoKTP;
+        $fileName = $request->foto_ktp;
 
         if ($validator->fails()) {
             return new FormatApi(false, 'Validasi gagal', $validator->errors()->all());
@@ -135,15 +136,15 @@ class User62Controller extends Controller
             }
         }
 
-        if (file_exists(public_path('tmp/' . $fileName))) {
+        if (file_exists(public_path('photo/' . $fileName))) {
             $updatePhoto = $user->detail->update([
                 'foto_ktp' => $fileName,
             ]);
 
-            rename(public_path('tmp/' . $fileName), public_path('photo/' . $fileName));
+            rename(public_path('photo/' . $fileName), public_path('photo/' . $fileName));
 
             if ($updatePhoto) {
-                return new FormatApi(true, 'Berhasil mengubah foto profil user', null);
+                return new FormatApi(true, 'Berhasil mengubah foto KTP user', null);
             } else {
                 return new FormatApi(false, 'Gagal mengubah foto profil user', null);
             }
@@ -244,21 +245,25 @@ class User62Controller extends Controller
         $user = User::with('detail')->find($id);
 
         if (!$user) {
-            return new FormatApi(false, 'User tidak ditemukan', null);
+            return new FormatApi(false, 'User beserta data tidak ditemukan', null);
         }
 
-        if ($user->foto != "foto.png") {
-            if (file_exists(public_path('images/' . $user->foto))) {
-                unlink(public_path('photo/' . $user->foto));
-            }
+        $user->delete();
+
+        return new FormatApi(true, 'Berhasil menghapus User dan Data', null);
+
+    }
+    public function deleteDataUser62($id)
+    {
+        $user = Data62::find($id);
+
+        if (!$user) {
+            return new FormatApi(false, 'User beserta data tidak ditemukan', null);
         }
 
-        if ($user->detail->foto_ktp != "foto_ktp.png") {
-            if (file_exists(public_path('images/' . $user->detail->foto_ktp))) {
-                unlink
-                (public_path('photo/' . $user->detail->foto_ktp));
-            }
-        }
+        $user->delete();
+
+        return new FormatApi(true, 'Berhasil menghapus User dan Data', null);
 
     }
 }

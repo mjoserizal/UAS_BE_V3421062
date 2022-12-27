@@ -28,7 +28,7 @@
     <div class="wrapper">
         <!-- Navbar -->
 
-         @include('include.header')
+        @include('include.header')
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -60,9 +60,9 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h1><b>Change Password</b></h1>
-                        <br>
-                        <h4 class="card-title">Hi, {{ Auth::user()->name }}</h4>
+                            <h1><b>Change Password</b></h1>
+                            <br>
+                            <h4 class="card-title">Hi, {{ Auth::user()->name }}</h4>
                         </div>
 
                         <div class="col-sm-6">
@@ -106,23 +106,25 @@
                         <div class="col-md-12">
                             <div class="card">
                                 <div class="card-header">
-                                <h4>Password</h4>
+                                    <h4>Password</h4>
                                 </div>
                                 <div class="card-body">
                                     <div class="tab-content">
                                         <div class="tab-pane active" id="settings">
-                                        <form class="form-horizontal" action="{{ $URL . '/user62/password' }}"
+                                            <form class="form-horizontal" action="{{ $URL . '/user62/password' }}"
                                                 method="POST">
                                                 @csrf
                                                 <div class="form-group row">
-                                                    <label for="inputName" class="col-sm-2 col-form-label">Old Password</label>
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Old
+                                                        Password</label>
                                                     <div class="col-sm-10">
                                                         <input type="password" name="old_password" class="form-control"
                                                             id="inputName" placeholder="Old Password">
                                                     </div>
                                                 </div>
                                                 <div class="form-group row">
-                                                    <label for="inputName" class="col-sm-2 col-form-label">New Password</label>
+                                                    <label for="inputName" class="col-sm-2 col-form-label">New
+                                                        Password</label>
                                                     <div class="col-sm-10">
                                                         <input type="password" name="password" class="form-control"
                                                             id="inputName" placeholder="New Password">
@@ -130,7 +132,8 @@
                                                 </div>
 
                                                 <div class="form-group row">
-                                                    <label for="inputName" class="col-sm-2 col-form-label">Confirm Password</label>
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Confirm
+                                                        Password</label>
                                                     <div class="col-sm-10">
                                                         <input type="password" name="repassword" class="form-control"
                                                             id="inputName" placeholder="Confirm Password">

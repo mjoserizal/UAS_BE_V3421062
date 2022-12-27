@@ -24,11 +24,11 @@
 @endphp
 
 
-<body class="hold-transition dark-mode sidebar-mini">
+<body class="hold-transition light-mode sidebar-mini">
     <div class="wrapper">
         <!-- Navbar -->
 
-         @include('include.header')
+        @include('include.header')
 
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
@@ -60,7 +60,7 @@
                 <div class="container-fluid">
                     <div class="row mb-2">
                         <div class="col-sm-6">
-                        <h1><b>Edit Profile</b></h1>
+                            <h1><b>Edit Profile</b></h1>
                         </div>
 
                         <div class="col-sm-6">
@@ -99,10 +99,9 @@
             <section class="content">
                 <div class="container-fluid">
                     <div class="row">
-                    <div class="container"
-                        <div class="col">
+                        <div class="container" <div class="col">
                             <div class="card card-primary card-outline">
-                                <div class="card-header text-center bg-dark text-white mt-3">
+                                <div class="card-header text-center bg-light text-white mt-3">
                                     <h4>Edit User Data</h4>
                                 </div><!-- /.card-header -->
                                 <div class="card-body">
@@ -112,8 +111,7 @@
                                                 method="POST">
                                                 @csrf
                                                 <div class="form-group row">
-                                                    <label for="inputName"
-                                                        class="col-sm-2 col-form-label">Name</label>
+                                                    <label for="inputName" class="col-sm-2 col-form-label">Name</label>
                                                     <div class="col-sm-10">
                                                         <input type="text" name="name" class="form-control"
                                                             id="inputName" placeholder="Name"
@@ -164,13 +162,11 @@
 
 
                                                 <div class="form-group row">
-                                                    <label for="inputTempatLahir"
-                                                        class="col-sm-2 col-form-label">Tempat
+                                                    <label for="inputTempatLahir" class="col-sm-2 col-form-label">Tempat
                                                         Lahir</label>
                                                     <div class="col-sm-10">
-                                                        <input type="text" name="tempat_lahir"
-                                                            class="form-control" id="inputText"
-                                                            placeholder="Tempat Lahir"
+                                                        <input type="text" name="tempat_lahir" class="form-control"
+                                                            id="inputText" placeholder="Tempat Lahir"
                                                             value="{{ $user['detail']['tempat_lahir'] }}"
                                                             {{ $is_preview ? 'disabled' : '' }}>
                                                     </div>
@@ -206,90 +202,87 @@
                         </div>
                     </div>
                     <br>
-                            <div class="card card-success card-outline">
+                    <div class="card card-success card-outline">
 
-                                <div class="card-body box-profile">
-                                <div class="card-header text-center bg-dark text-white mb-2">
-                                    <h4>Upload Foto Profil</h4>
-                                </div>
-                                    <div class="text-center">
-                                        @if ($is_preview)
-                                            <h2>Foto Profil</h2>
-                                        @endif
-                                        <img class="profile-user-img img-fluid img-circle"
-                                        src="{{ url("photo/{$user['foto']}") }}" alt="User profile picture"
-                                            style="height: 100px; width:100px;">
-                                    </div>
-                                    @if (!$is_preview)
-                                        <p class="text-muted text-center">{{ $user['role'] }}</p>
-                                        <form enctype='multipart/form-data' action="{{ $URL . '/user62/photo' }}"
-                                            method="POST">
-                                            @csrf
-                                            <div class="mt-3 form-group">
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" name="photoProfil"
-                                                            class="custom-file-input" id="validatedCustomFile"
-                                                            required>
-                                                        <label class="custom-file-label" for="exampleInputFile">Pilih
-                                                            Foto...</label>
-
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="mt-3 btn btn-success btn-block"><b>Upload
-                                                        Foto</b></button>
-
-                                            </div>
-                                        </form>
-                                    @endif
-                                </div>
-
-                                <!-- /.card-body -->
+                        <div class="card-body box-profile">
+                            <div class="card-header text-center bg-light text-white mb-2">
+                                <h4>Upload Foto Profil</h4>
                             </div>
-
-                            <br>
-
-                            <div class="card card-danger card-outline">
-                                <div class="card-body box-profile">
-                                <div class="card-header text-center bg-dark text-white mb-2">
-                                    <h4>Upload Foto KTP</h4>
-                                </div>
-                                    <div class="text-center">
-                                        @if ($is_preview)
-                                            <h2>Foto KTP</h2>
-                                        @endif
-                                        <img class="profile-user-img img-fluid" style="height: 100px; width:150px;"
-                                            src="{{ url("photo/{$user['detail']['foto_ktp']}") }}"
-                                    </div>
-
-                                    @if (!$is_preview)
-                                    <form enctype='multipart/form-data' action="{{ $URL . '/user62/photoKTP' }}"
-                                            method="POST">
-                                            @csrf
-                                            <div class="form-group mt-3">
-                                                <div class="input-group">
-                                                    <div class="custom-file">
-                                                        <input type="file" name="photoKTP"
-                                                            class="custom-file-input" id="validatedCustomFile"
-                                                            required>
-                                                        <label class="custom-file-label"
-                                                            for="validatedCustomFile">Pilih Foto...</label>
-                                                        <div class="invalid-feedback">Example invalid custom file
-                                                            feedback
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <button type="submit" class="mt-3 btn btn-danger btn-block"><b>Upload
-                                                        Foto KTP</b></button>
+                            <div class="text-center">
+                                @if ($is_preview)
+                                    <h2>Foto Profil</h2>
+                                @endif
+                                <img class="profile-user-img img-fluid img-circle"
+                                    src="{{ url("photo/{$user['foto']}") }}" alt="User profile picture"
+                                    style="height: 100px; width:100px;">
+                            </div>
+                            @if (!$is_preview)
+                                <p class="text-muted text-center">{{ $user['role'] }}</p>
+                                <form enctype='multipart/form-data' action="{{ $URL . '/user62/photo' }}"
+                                    method="POST">
+                                    @csrf
+                                    <div class="mt-3 form-group">
+                                        <div class="input-group">
+                                            <div class="custom-file">
+                                                <input type="file" name="photoProfil" class="custom-file-input"
+                                                    id="validatedCustomFile" required>
+                                                <label class="custom-file-label" for="exampleInputFile">Pilih
+                                                    Foto...</label>
 
                                             </div>
-                                        </form>
-                                    @endif
-                                </div>
-                                <!-- /.card-body -->
-                        <!-- /.col -->
-                </div>
-            </div>
+                                        </div>
+                                        <button type="submit" class="mt-3 btn btn-success btn-block"><b>Upload
+                                                Foto</b></button>
+
+                                    </div>
+                                </form>
+                            @endif
+                        </div>
+
+                        <!-- /.card-body -->
+                    </div>
+
+                    <br>
+
+                    <div class="card card-danger card-outline">
+                        <div class="card-body box-profile">
+                            <div class="card-header text-center bg-light text-white mb-2">
+                                <h4>Upload Foto KTP</h4>
+                            </div>
+                            <div class="text-center">
+                                @if ($is_preview)
+                                    <h2>Foto KTP</h2>
+                                @endif
+                                <img class="profile-user-img img-fluid" style="height: 100px; width:150px;"
+                                    src="{{ url("photo/{$user['detail']['foto_ktp']}") }}" </div>
+
+                                @if (!$is_preview)
+                                    <form enctype='multipart/form-data' action="{{ $URL . '/user62/photoKTP' }}"
+                                        method="POST">
+                                        @csrf
+                                        <div class="form-group mt-3">
+                                            <div class="input-group">
+                                                <div class="custom-file">
+                                                    <input type="file" name="photoKTP" class="custom-file-input"
+                                                        id="validatedCustomFile" required>
+                                                    <label class="custom-file-label" for="validatedCustomFile">Pilih
+                                                        Foto...</label>
+                                                    <div class="invalid-feedback">Example invalid custom file
+                                                        feedback
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <button type="submit" class="mt-3 btn btn-danger btn-block"><b>Upload
+                                                    Foto KTP</b></button>
+
+                                        </div>
+                                    </form>
+                                @endif
+                            </div>
+                            <!-- /.card-body -->
+                            <!-- /.col -->
+                        </div>
+                    </div>
             </section>
         </div>
         <footer class="main-footer">

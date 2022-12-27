@@ -18,13 +18,13 @@ use App\Http\Controllers\api\User62Controller;
 Route::get("/user62", [User62Controller::class, "getUsers62"]);
 Route::get("/user62/{id}", [User62Controller::class, "getUserDetail62"]);
 Route::put("/user62/{id}", [User62Controller::class, "putUserDetail62"]);
-Route::put("/user62/{id}/photo", [User62Controller::class, "putUserPhoto62"]);
-Route::put("/user62/{id}/photoKTP", [User62Controller::class, "putUserPhotoKTP62"]);
+Route::put("/user62/{id}/foto", [User62Controller::class, "putUserPhoto62"]);
+Route::put("/user62/{id}/fotoktp", [User62Controller::class, "putUserPhotoKTP62"]);
 Route::put("/user62/{id}/password", [User62Controller::class, "putUserPassword62"]);
 Route::put("/user62/{id}/status", [User62Controller::class, "putUserStatus62"]);
 Route::put("/user62/{id}/agama", [User62Controller::class, "putUserAgama62"]);
-Route::delete("/user62/{id}", [User62Controller::class, "deleteUser62"]);
-
+Route::delete("/user62/delete/{id}", [User62Controller::class, "deleteUser62"]);
+Route::delete("/user62/deletedata/{id}", [User62Controller::class, "deleteDataUser62"]);
 Route::get("/agama62", [Agama62Controller::class, "getAgama62"]);
 Route::get("/agama62/{id}", [Agama62Controller::class, "getDetailAgama62"]);
 Route::post("/agama62", [Agama62Controller::class, "postAgama62"]);
